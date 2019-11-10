@@ -1,0 +1,14 @@
+ports:
+  - port: 8085
+
+tasks:
+- init: |
+    git clone https://github.com/keeweb/favicon-proxy.git ../favicon-proxy
+    git clone https://github.com/keeweb/kdbxweb.git ../kdbxweb
+    git clone https://github.com/keeweb/beta.keeweb.info.git ../keeweb-beta
+    git clone https://github.com/keeweb/keeweb-site.git -b gh-pages ../keeweb-site
+    git clone https://github.com/keeweb/keeweb-plugins.git ../keeweb-plugins
+    git clone https://github.com/keeweb/keeweb-tools.git ../keeweb-tools
+    mkdir ../keys && echo 'module.exports = { identities: { app: "" }, appleId: "", teamId: "" }' > ../keys/codesign.js
+    npm install
+  command: npm run dev
